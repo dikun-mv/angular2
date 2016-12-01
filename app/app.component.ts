@@ -1,7 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Department } from "./model/department.model";
+import { DepartmentService } from "./service/department.service";
 
 @Component({
   selector: 'app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `<ul><li *ngFor="let department of departments">Id: {{department.id}}<br>Name: {{department.name}}</li></ul>`
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent implements OnInit {
+    departments: Department[];
+
+    constructor(private departmentService: DepartmentService) {}
+
+    ngOnInit(): void {
+        let s = this.departmentService;
+
+        s.getAll().then(console.log)
+    }
+}
