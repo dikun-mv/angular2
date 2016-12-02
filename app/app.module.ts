@@ -4,11 +4,12 @@ import { HttpModule } from '@angular/http'
 
 import { AppComponent }  from './app.component';
 import { DepartmentService } from "./service/department.service";
+import { EmployeeService } from "./service/employee.service";
 
 @NgModule({
     imports:      [ BrowserModule, HttpModule ],
     declarations: [ AppComponent ],
     bootstrap:    [ AppComponent ],
-    providers:    [ DepartmentService ]
+    providers:    [ DepartmentService, EmployeeService ]
 })
 export class AppModule {}
