@@ -12,8 +12,5 @@ export class AppComponent implements OnInit {
     constructor(private departmentService: DepartmentService) {}
 
     ngOnInit(): void {
-        let s = this.departmentService;
-
-        s.getAll().then(console.log)
     }
 }
