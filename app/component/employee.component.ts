@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import 'rxjs/add/operator/switchMap';
+import { EmployeeService } from "../service/employee.service";
+import { Employee } from "../model/employee.model";
 
 @Component({
     moduleId: module.id,
@@ -8,11 +9,36 @@ import 'rxjs/add/operator/switchMap';
     templateUrl: 'employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
-    id: number;
+    departmentId: number;
+    temp: Employee = new Employee(0, 0, '', '', '');
+    employees: Employee[];
 
-    constructor(private route: ActivatedRoute) {}
+    constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
 
     ngOnInit(): void {
-        this.id = this.route.snapshot.params['id'];
+        this.departmentId = this.route.snapshot.params['id'];
+        this.temp.departmentId = this.departmentId;
+        this.loadEmployees();
+    }
+
+    loadEmployees(): void {
+        this.employeeService.getAllByDepartmentId(this.departmentId).then(employees => this.employees = employees);
+    }
+
+    createEmployee(employee: Employee): void {
+        this.employeeService.create(employee).then(() => {
+            this.loadEmployees();
+            this.temp.firstName = '';
+            this.temp.secondName = '';
+            this.temp.lastName = '';
+        });
+    }
+
+    updateEmployee(employee: Employee): void {
+        this.employeeService.update(employee, employee.id).then(() => this.loadEmployees());
+    }
+
+    deleteEmployee(employee: Employee): void {
+        this.employeeService.delete(employee.id).then(() => this.loadEmployees());
     }
 }

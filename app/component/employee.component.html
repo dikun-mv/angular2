@@ -1,1 +1,65 @@
-employee {{id}}
+<h3 class="text-center">Employees</h3>
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr class="info">
+        <th class="col-sm-1">ID</th>
+        <th class="col-sm-1">Department ID</th>
+        <th class="col-sm-3">First Name</th>
+        <th class="col-sm-3">Second Name</th>
+        <th class="col-sm-3">Last Name</th>
+        <th class="col-sm-1">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="success">
+        <td>
+            <button type="button" class="btn btn-primary btn-sm btn-block" disabled>0</button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm btn-block" disabled>{{departmentId}}</button>
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="temp.firstName">
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="temp.secondName">
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="temp.lastName">
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" (click)="createEmployee(temp)">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" disabled>
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+    <tr *ngFor="let employee of employees">
+        <td>
+            <button type="button" class="btn btn-primary btn-sm btn-block" disabled>{{employee.id}}</button>
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="employee.departmentId">
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="employee.firstName">
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="employee.secondName">
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="employee.lastName">
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" (click)="updateEmployee(employee)">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="deleteEmployee(employee)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
