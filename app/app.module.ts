@@ -8,9 +8,10 @@ import { EmployeeService } from "./service/employee.service";
 import { DepartmentComponent } from "./component/department.component";
 import { EmployeeComponent } from "./component/employee.component";
 import { AppRoutingModule } from "./app-routing.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-    imports:      [ BrowserModule, HttpModule, AppRoutingModule ],
+    imports:      [ BrowserModule, HttpModule, FormsModule, AppRoutingModule ],
     declarations: [ AppComponent, DepartmentComponent, EmployeeComponent ],
     bootstrap:    [ AppComponent ],
     providers:    [ DepartmentService, EmployeeService ]

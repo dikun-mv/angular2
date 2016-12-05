@@ -1,1 +1,44 @@
-department
+<h3 class="text-center">Departments</h3>
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr class="info">
+        <th class="col-sm-1">ID</th>
+        <th class="col-sm-10">Name</th>
+        <th class="col-sm-1">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="success">
+        <td>
+            <button type="button" class="btn btn-primary btn-sm btn-block" disabled>0</button>
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="temp.name">
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" (click)="createDepartment(temp)">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" disabled>
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+    <tr *ngFor="let department of departments">
+        <td>
+            <button type="button" class="btn btn-primary btn-sm btn-block" routerLink="/departments/{{department.id}}/employees">{{department.id}}</button>
+        </td>
+        <td>
+            <input class="form-control" type="text" [(ngModel)]="department.name">
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" (click)="updateDepartment(department)">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="deleteDepartment(department)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
