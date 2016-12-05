@@ -1,13 +1,13 @@
-<h3 class="text-center">Employees</h3>
+<h3 class="text-center">Сотрудники</h3>
 <table class="table table-hover table-bordered">
     <thead>
     <tr class="info">
         <th class="col-sm-1">ID</th>
-        <th class="col-sm-1">Department ID</th>
-        <th class="col-sm-3">First Name</th>
-        <th class="col-sm-3">Second Name</th>
-        <th class="col-sm-3">Last Name</th>
-        <th class="col-sm-1">Action</th>
+        <th class="col-sm-1">ID Отдела</th>
+        <th class="col-sm-3">Имя</th>
+        <th class="col-sm-3">Фамилия</th>
+        <th class="col-sm-3">Отчество</th>
+        <th class="col-sm-1">Действия</th>
     </tr>
     </thead>
     <tbody>
@@ -16,7 +16,7 @@
             <button type="button" class="btn btn-primary btn-sm btn-block" disabled>0</button>
         </td>
         <td>
-            <button type="button" class="btn btn-primary btn-sm btn-block" disabled>{{departmentId}}</button>
+            <input class="form-control" type="text" value="{{temp.departmentId}}" disabled>
         </td>
         <td>
             <input class="form-control" type="text" [(ngModel)]="temp.firstName">

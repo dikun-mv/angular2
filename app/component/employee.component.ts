@@ -9,20 +9,18 @@ import { Employee } from "../model/employee.model";
     templateUrl: 'employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
-    departmentId: number;
     temp: Employee = new Employee(0, 0, '', '', '');
     employees: Employee[];
 
     constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
 
     ngOnInit(): void {
-        this.departmentId = this.route.snapshot.params['id'];
-        this.temp.departmentId = this.departmentId;
+        this.temp.departmentId = this.route.snapshot.params['id'];
         this.loadEmployees();
     }
 
     loadEmployees(): void {
-        this.employeeService.getAllByDepartmentId(this.departmentId).then(employees => this.employees = employees);
+        this.employeeService.getAllByDepartmentId(this.temp.departmentId).then(employees => this.employees = employees);
     }
 
     createEmployee(employee: Employee): void {
